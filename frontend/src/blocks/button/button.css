@@ -1,0 +1,21 @@
+.button {
+  box-sizing: border-box;
+  outline: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 14px;
+  border-radius: 2px;
+  transition: opacity 0.3s linear 0.2s;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 216px;
+}

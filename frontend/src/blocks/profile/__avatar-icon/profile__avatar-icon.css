@@ -1,0 +1,17 @@
+.profile__avatar-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 31px;
+  z-index: 1;
+  position: relative;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .profile__avatar-icon {
+    margin: 0;
+    margin-bottom: 25px;
+  }
+}

@@ -1,0 +1,12 @@
+.card__flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding-left: 21px;
+  padding-right: 19px;
+  padding-bottom: 22px;
+  width: 100%;
+  box-sizing: border-box;
+}

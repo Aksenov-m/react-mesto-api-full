@@ -1,0 +1,7 @@
+.popup__container_image {
+  justify-content: center;
+  background-color: transparent;
+  max-width: fit-content;
+  padding: 0;
+  margin: 0 auto;
+}

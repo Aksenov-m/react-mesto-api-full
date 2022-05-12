@@ -1,0 +1,17 @@
+@media screen and (max-width: 1024px) {
+  .content__section {
+    padding: 0 48px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content__section {
+    padding: 0 24px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .content__section {
+    padding: 0 19px;
+  }
+}

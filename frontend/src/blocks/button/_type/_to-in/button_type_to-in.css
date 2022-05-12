@@ -1,0 +1,15 @@
+.button_type_to-in {
+  display: inline-block;
+  border: none;
+  color: #ffff;
+  margin: 0 auto;
+  padding: 0;
+  transition: opacity 0.3s linear 0.2s;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  margin-top: 15px;
+}

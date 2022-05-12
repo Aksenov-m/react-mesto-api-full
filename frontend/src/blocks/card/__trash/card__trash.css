@@ -1,0 +1,18 @@
+.card__trash {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  outline: none;
+  width: 18px;
+  height: 19px;
+  border: none;
+  background-image: url(../../../images/del.svg);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s linear 0.2s;
+  cursor: pointer;
+}

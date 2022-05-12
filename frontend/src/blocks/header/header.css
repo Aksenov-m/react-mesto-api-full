@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(84, 84, 84, 0.7);
+  padding-top: 45px;
+  padding-bottom: 41px;
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    padding: 28px 27px 32px 27px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    flex-direction: column;
+  }
+}
