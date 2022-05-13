@@ -19,7 +19,7 @@ const {
 const { PORT = 3000 } = process.env;
 
 const app = express();
-app.use(cors);
+app.use(cors());
 app.use(requestLogger); // подключаем логгер запросов
 app.use(express.json()); // для собирания JSON-формата
 app.post('/signin', celebrate({
