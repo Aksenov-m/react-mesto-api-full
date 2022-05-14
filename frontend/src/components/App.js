@@ -90,7 +90,6 @@ function App() {
             const userData = {
               email: res.data.email,
             };
-            // localStorage.setItem("jwt", res.token);
             setUserData(userData);
             setLoggedIn(true);
             history.push("/");
@@ -173,9 +172,8 @@ function App() {
     setIsLoading(true);
     api
       .setUserInfo(data)
-      .then((data) => {
-        debugger
-        setСurrentUser(data);
+      .then((newData) => {
+        setСurrentUser(newData.data);
         closeAllPopups();
       })
       .catch((err) => alert(err))
@@ -189,7 +187,7 @@ function App() {
     api
       .editAvatar(data.avatar)
       .then((newData) => {
-        setСurrentUser(newData.avatar);
+        setСurrentUser(newData.data);
         closeAllPopups();
       })
       .catch((err) => alert(err))

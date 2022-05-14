@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-// import { useParams } from "react-router-dom"; // импортируем хук
+
 
 // Функциональный компонент Main
 function Main(props) {
-  // let { id } = useParams();
-  // id = currentUser._id;
-
   const currentUser = useContext(CurrentUserContext);
   return (
     <main className='content page__content'>
