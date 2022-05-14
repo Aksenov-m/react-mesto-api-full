@@ -90,7 +90,7 @@ function App() {
             const userData = {
               email: res.data.email,
             };
-            localStorage.setItem("jwt", res.token);
+            // localStorage.setItem("jwt", res.token);
             setUserData(userData);
             setLoggedIn(true);
             history.push("/");
@@ -107,13 +107,13 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card, !isLiked)
       .then((newCard) => {
-        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+        setCards((state) => state.map((c) => (c._id === card._id ? newCard.data : c)));
       })
       .catch((err) => alert(err));
   }
@@ -132,14 +132,14 @@ function App() {
     if (loggedIn) {
       api
         .getInitialCards()
-        .then((data) => {
-          setCards(data);
+        .then((cards) => {
+          setCards(cards.data);
         })
         .catch((err) => alert(err));
       api
         .getUserInfo()
         .then((user) => {
-          setСurrentUser(user);
+          setСurrentUser(user.data);
         })
         .catch((err) => alert(err));
     }
@@ -174,6 +174,7 @@ function App() {
     api
       .setUserInfo(data)
       .then((data) => {
+        debugger
         setСurrentUser(data);
         closeAllPopups();
       })
@@ -186,9 +187,9 @@ function App() {
   function handleUpdateAvatar(data) {
     setIsLoading(true);
     api
-      .editAvatar(data)
-      .then((data) => {
-        setСurrentUser(data);
+      .editAvatar(data.avatar)
+      .then((newData) => {
+        setСurrentUser(newData.avatar);
         closeAllPopups();
       })
       .catch((err) => alert(err))
@@ -202,7 +203,7 @@ function App() {
     api
       .createCard(data)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => alert(err))

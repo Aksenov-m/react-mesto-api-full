@@ -16,14 +16,21 @@ export class Api {
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
+
     }).then(onError);
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     }).then(onError);
   }
 
@@ -31,7 +38,10 @@ export class Api {
   setUserInfo(user) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify({
         name: user.name,
         about: user.about,
@@ -43,21 +53,27 @@ export class Api {
   editAvatar(userAvatar) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify({
-        avatar: userAvatar.avatar,
+        avatar: userAvatar,
       }),
     }).then(onError);
   }
 
-  getAllData() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
-  }
+  // getAllData() {
+  //   return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  // }
   // Добавление новой карточки
   createCard(data) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -69,7 +85,10 @@ export class Api {
   deleteCard(data) {
     return fetch(`${this._url}/cards/${data._id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     }).then(onError);
   }
 
@@ -77,7 +96,10 @@ export class Api {
   likeCard(data) {
     return fetch(`${this._url}/cards/${data._id}/likes`, {
       method: "PUT",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     }).then(onError);
   }
 
@@ -85,7 +107,10 @@ export class Api {
   deleteLikeCard(data) {
     return fetch(`${this._url}/cards/${data._id}/likes`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      }
     }).then(onError);
   }
   // обновлённые данные лайка
@@ -102,6 +127,7 @@ export class Api {
 const api = new Api({
   baseUrl: "http://api.mesto.aksenov.nomoredomains.xyz",
   headers: {
+    // authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "Content-Type": "application/json",
   },
 });

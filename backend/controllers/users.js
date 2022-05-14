@@ -76,7 +76,7 @@ const updateUser = (req, res, next) => {
       runValidators: true, // данные будут валидированы перед изменением
     },
   )
-    .then((user) => res.send({ name: user.name, about: user.about }))
+    .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
@@ -99,7 +99,7 @@ const updateUserAvatar = (req, res, next) => {
       runValidators: true, // данные будут валидированы перед изменением
     },
   )
-    .then((user) => res.send({ avatar: user.avatar }))
+    .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));

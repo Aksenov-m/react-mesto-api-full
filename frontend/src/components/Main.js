@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { useParams } from "react-router-dom"; // импортируем хук
+// import { useParams } from "react-router-dom"; // импортируем хук
 
 // Функциональный компонент Main
 function Main(props) {
