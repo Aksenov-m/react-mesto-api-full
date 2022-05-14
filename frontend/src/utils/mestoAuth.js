@@ -1,4 +1,4 @@
-export const BASE_URL = "http://api.mesto.aksenov.nomoredomains.xyz";
+export const BASE_URL = "https://api.mesto.aksenov.nomoredomains.xyz";
 
 // регистрация пользователя
 export const register = (password, email) => {
