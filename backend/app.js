@@ -1,5 +1,4 @@
 require('dotenv').config();
-const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -11,6 +10,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const regex = require('./utils/utils');
 const errorHandling = require('./middlewares/errorHandling');
+const cors = require('./middlewares/cors');
 
 const {
   login,
@@ -21,7 +21,7 @@ const {
 const { PORT = 3000 } = process.env;
 
 const app = express();
-app.use(cors());
+app.use(cors);
 app.use(requestLogger); // подключаем логгер запросов
 app.use(express.json()); // для собирания JSON-формата
 app.get('/crash-test', () => {
