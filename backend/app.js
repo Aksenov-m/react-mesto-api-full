@@ -2,7 +2,7 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const { celebrate, errors, Joi } = require('celebrate');
 const userRouter = require('./routes/users'); // импортируем роутер user
 const cardRouter = require('./routes/cards'); // импортируем роутер Card
@@ -10,7 +10,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const regex = require('./utils/utils');
-// const errorHandling = require('./middlewares/errorHandling');
+const errorHandling = require('./middlewares/errorHandling');
 
 const {
   login,
@@ -58,8 +58,8 @@ app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors()); // обработчик ошибок celebrate
 
-// app.use(errorHandling);
-app.use(helmet());
+app.use(errorHandling);
+// app.use(helmet());
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
