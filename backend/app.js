@@ -10,7 +10,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
 const regex = require('./utils/utils');
-const errorHandling = require('./middlewares/errorHandling');
+// const errorHandling = require('./middlewares/errorHandling');
 
 const {
   login,
@@ -58,7 +58,7 @@ app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors()); // обработчик ошибок celebrate
 
-app.use(errorHandling);
+// app.use(errorHandling);
 app.use(helmet());
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb');
