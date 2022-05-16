@@ -63,9 +63,6 @@ export class Api {
     }).then(onError);
   }
 
-  // getAllData() {
-  //   return Promise.all([this.getInitialCards(), this.getUserInfo()]);
-  // }
   // Добавление новой карточки
   createCard(data) {
     return fetch(`${this._url}/cards`, {

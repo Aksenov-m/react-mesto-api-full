@@ -1,5 +1,4 @@
 // создадим express router
-const regex = /((https?:):\/\/)?[a-z0-9./?:@\-_=#]+\.([a-z0-9&./?:@\-_=#])*/i;
 const { celebrate, Joi } = require('celebrate');
 const cardRouter = require('express').Router();
 const {
@@ -9,6 +8,7 @@ const {
   likeCard,
   dislikeCard,
 } = require('../controllers/cards'); // импортируем user контроллеры
+const regex = require('../utils/utils');
 
 cardRouter.get('/cards', getCards); // возвращает все карточки
 cardRouter.post('/cards', celebrate({

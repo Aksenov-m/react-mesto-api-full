@@ -1,14 +1,16 @@
-const regex = /((https?:):\/\/)?[a-z0-9./?:@\-_=#]+\.([a-z0-9&./?:@\-_=#])*/i;
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const { celebrate, errors, Joi } = require('celebrate');
 const userRouter = require('./routes/users'); // импортируем роутер user
 const cardRouter = require('./routes/cards'); // импортируем роутер Card
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/not-found-err');
+const regex = require('./utils/utils');
+const errorHandling = require('./middlewares/errorHandling');
 
 const {
   login,
@@ -49,27 +51,15 @@ app.post('/signup', celebrate({
 app.use(auth);
 app.use(cardRouter); // запускаем Card
 app.use(userRouter); // запускаем user
-app.use(errorLogger); // подключаем логгер ошибок
 app.use((req, res, next) => {
   next(new NotFoundError('Роутер не найден!'));
 });
+app.use(errorLogger); // подключаем логгер ошибок
+
 app.use(errors()); // обработчик ошибок celebrate
 
-app.use((err, req, res, next) => {
-  // если у ошибки нет статуса, выставляем 500
-  const { statusCode = 500, message } = err;
-
-  res
-    .status(statusCode)
-    .send({
-      // проверяем статус и выставляем сообщение в зависимости от него
-      message: statusCode === 500
-        ? 'На сервере произошла ошибка'
-        : message,
-    });
-  next();
-});
-
+app.use(errorHandling);
+app.use(helmet());
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb');
 

@@ -1,5 +1,4 @@
 // создадим express router
-const regex = /((https?:):\/\/)?[a-z0-9./?:@\-_=#]+\.([a-z0-9&./?:@\-_=#])*/i;
 const { celebrate, Joi } = require('celebrate');
 const userRouter = require('express').Router();
 
@@ -11,6 +10,7 @@ const {
   updateUserAvatar,
   getCurrentUser,
 } = require('../controllers/users'); // импортируем user контроллеры
+const regex = require('../utils/utils');
 
 userRouter.get('/users', getUsers);
 userRouter.get('/users/me', getCurrentUser); // информацию о текущем пользователе
