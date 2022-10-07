@@ -13,7 +13,9 @@ function Header(props) {
 
   return (
     <header className='header section page__header'>
-      <img className='header__logo' src={logo} alt='Логотип места России.' />
+      <Link className='link' path='/'>
+        <img className='header__logo' src={logo} alt='Логотип места России.' />
+      </Link>
       <div className='header__info'>
         <Switch>
           <Route exact path='/'>

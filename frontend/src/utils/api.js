@@ -19,8 +19,7 @@ export class Api {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      }
-
+      },
     }).then(onError);
   }
 
@@ -30,7 +29,7 @@ export class Api {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      }
+      },
     }).then(onError);
   }
 
@@ -85,7 +84,7 @@ export class Api {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      }
+      },
     }).then(onError);
   }
 
@@ -96,7 +95,7 @@ export class Api {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      }
+      },
     }).then(onError);
   }
 
@@ -107,7 +106,7 @@ export class Api {
       headers: {
         ...this._headers,
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
-      }
+      },
     }).then(onError);
   }
   // обновлённые данные лайка
